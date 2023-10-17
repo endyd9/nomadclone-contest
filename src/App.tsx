@@ -4,6 +4,7 @@ import Login from "./route/login";
 import Home from "./route/home";
 import { useEffect, useState } from "react";
 import { auth } from "./firebase";
+import Join from "./route/join";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
+  {
+    path: "/join",
+    element: <Join />,
+  },
 ]);
 
 function App() {
@@ -30,7 +35,7 @@ function App() {
     init();
   }, []);
   return (
-    <div className="w-screen h-screen bg-black">
+    <div className="w-screen h-[90vh] lg:h-[100vh] bg-black text-white ">
       {!isLoading && <RouterProvider router={router} />}
     </div>
   );
