@@ -1,16 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
+import Header from "../components/header";
+import Peed from "../components/peed";
 
 export default function Home() {
   const navigate = useNavigate();
-  const onLogoutClick = async () => {
-    await auth.signOut();
-    navigate("/login");
+  const onWriteClick = () => {
+    navigate("/write");
   };
   return (
-    <div>
-      <h1 className="text-white">홈임</h1>
-      <button onClick={onLogoutClick}>임시 로그아웃</button>
+    <div className="max-w-xl h-full mx-auto">
+      <Header />
+
+      <div className="w-screen pt-24 mx-5">
+        <Peed />
+      </div>
+      <div className="w-12 h-12 bg-blue-400 rounded-full fixed bottom-20 right-5 flex items-center justify-center">
+        <button onClick={onWriteClick} className="text-3xl">
+          +
+        </button>
+      </div>
     </div>
   );
 }
